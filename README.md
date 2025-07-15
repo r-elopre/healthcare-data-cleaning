@@ -1,4 +1,6 @@
 ## 🧹 Step 1: Data Cleaning and Preprocessing
+<img width="410" height="614" alt="010a4c53-fa2c-4c21-a12c-a47d27cec606 (1)" src="https://github.com/user-attachments/assets/221a9471-abfe-42b8-8442-666555c0dbbb" />
+
 
 ### 🔍 Inspection Summary
 
