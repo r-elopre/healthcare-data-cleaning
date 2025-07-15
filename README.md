@@ -100,6 +100,20 @@ After completing all data cleaning steps (handling missing values and fixing inc
 
 
 ## 🔎 Step 1.5: Exploratory Data Analysis (EDA)
+<img width="1903" height="959" alt="image" src="https://github.com/user-attachments/assets/09901f88-f7c7-4c1c-b7f2-c06314d21f30" />
+### Key Distribution Insights
+
+1. **Discrete, cluster‑style distributions**  
+   - **Age** only takes on a handful of values—25, 35, 60, 70—with roughly equal counts at each.  
+   - **Cholesterol** clusters around common measurements (160, 180, 190, 200, 220 mg/dL), with the highest frequency at 220.  
+   - **Systolic** and **Diastolic** pressures fall into “textbook” bins (110/70, 120/80, 130/85, 140/90), with most readings at the low and high ends.  
+   This suggests the data were rounded or binned at collection time (e.g. standard BP cuffs), making these numerics almost pseudo‑categorical.
+
+2. **Symmetry and skew**  
+   - **Age** is fairly symmetric between its minimum (25) and maximum (70).  
+   - **Cholesterol** shows slight right skew (longer tail toward higher readings).  
+   - **Blood pressure** readings appear roughly uniform across their four bins, with no heavy tails.
+
 
 **What we did:**  
 1. **Overview & summaries**  
@@ -122,6 +136,9 @@ After completing all data cleaning steps (handling missing values and fixing inc
 ---
 
 ## ✅ Step 2: Categorical Encoding
+<img width="660" height="440" alt="79dfa770-e1ff-43c9-8ba1-e2f23f8e8157 (1)" src="https://github.com/user-attachments/assets/bc5ce7ab-6cbb-42c4-9990-2aa36dc3b37e" />
+
+
 
 **What we did:**  
 1. **Dropped non‑informative or redundant columns**  
