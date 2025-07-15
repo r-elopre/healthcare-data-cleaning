@@ -76,3 +76,22 @@ We analyzed each column with missing data and handled them appropriately:
 | **1.1** | Inspect structure, types, nulls                  | ✅ Done  |
 | **1.2** | Handle missing values                            | ✅ Done  |
 | **1.3** | Fix inconsistencies (formatting, parsing, etc.)  | ✅ Done  |
+
+
+### ✅ Step 1.4: Save the Cleaned Data — Summary
+
+After completing all data cleaning steps (handling missing values and fixing inconsistencies), we finalized the process by exporting the cleaned dataset to a new CSV file.
+
+**📁 Output Path:**  
+
+
+**📋 Export Includes:**
+- Missing values in `Age`, `Condition`, `Blood Pressure`, and `Cholesterol` were handled
+- Text fields like `Patient Name`, `Gender`, `Condition`, `Email`, and `Phone Number` were cleaned and standardized
+- `Visit Date` values were normalized into a consistent `datetime` format
+- `Blood Pressure` values were split into numeric `Systolic` and `Diastolic` columns
+- Duplicate rows based on `Patient Name`, `Age`, and `Visit Date` were removed
+
+✅ The cleaned CSV file is now ready to be used in:
+- **Step 2: Exploratory Data Analysis (EDA)**
+- or any machine learning, statistical modeling, or visualization steps
