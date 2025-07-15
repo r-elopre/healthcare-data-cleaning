@@ -97,3 +97,46 @@ After completing all data cleaning steps (handling missing values and fixing inc
 ✅ The cleaned CSV file is now ready to be used in:
 - **Step 2: Exploratory Data Analysis (EDA)**
 - or any machine learning, statistical modeling, or visualization steps
+
+
+## 🔎 Step 1.5: Exploratory Data Analysis (EDA)
+
+**What we did:**  
+1. **Overview & summaries**  
+   - Checked the cleaned dataset’s shape, dtypes, and null counts.  
+   - Viewed `.describe()` for numeric summaries.  
+2. **Categorical counts**  
+   - Printed value counts for each object/categorical column (e.g. `Gender`, `Condition`, `Medication`, `Blood Pressure`, `Email`, `Phone Number`).  
+3. **Visual checks**  
+   - Plotted histograms for all numeric features (`Age`, `Cholesterol`, `Systolic`, `Diastolic`) to see distributions.  
+   - Boxplots to spot outliers and potential skew.  
+4. **Key takeaways:**  
+   - Dropped or ignored identifier‑like columns and mostly empty fields.  
+   - Confirmed which numeric columns have outliers (→ later choice of `RobustScaler`).  
+   - Noted category cardinalities and rare levels (→ informed encoding strategy).
+
+**Why it matters:**  
+- EDA ensures you understand data distributions, outliers, and category frequencies before encoding or scaling.  
+- Helps choose the right encoding and scaling methods, and flags any remaining data quirks.
+
+---
+
+## ✅ Step 2: Categorical Encoding
+
+**What we did:**  
+1. **Dropped non‑informative or redundant columns**  
+   - Removed identifiers (`Patient Name`), mostly‑empty fields (`Visit Date`, `Email`, `Phone Number`) and the original combined `Blood Pressure` (we split it into `Systolic`/`Diastolic`).  
+2. **Identified categorical features**  
+   - **Nominal** (no inherent order): `Gender`, `Condition`, `Medication`  
+3. **Applied One‑Hot Encoding**  
+   - Converted each category into its own binary column (e.g. `Gender_female`, `Condition_Diabetes`, `Medication_METFORMIN`, etc.)  
+   - Used `handle_unknown='ignore'` so unseen categories won’t break the pipeline.  
+4. **Preserved numeric columns**  
+   - Left `Age`, `Cholesterol`, `Systolic`, and `Diastolic` unchanged.  
+5. **Saved the result** to `data/healthcare_encoded.csv`, yielding a fully numeric dataset ready for scaling and modeling.
+
+**Why it matters:**  
+- ML algorithms require numeric inputs—text labels must be encoded.  
+- One‑Hot Encoding prevents implying any artificial order among nominal categories.  
+- Dropping identifiers and unused fields avoids privacy leaks and model overfitting.  
+- Using a `ColumnTransformer` with `handle_unknown='ignore'` makes your pipeline robust and reusable.  
