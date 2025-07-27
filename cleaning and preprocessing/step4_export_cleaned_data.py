@@ -31,3 +31,4 @@ output_path = r"C:\Users\ri\OneDrive\ai project\data cleaning\healthcare\data\he
 df.to_csv(output_path, index=False)
 
 print(f"✅ Cleaned dataset saved to:\n{output_path}")
+  

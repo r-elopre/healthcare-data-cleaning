@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 # 1. Load cleaned data
 df = pd.read_csv(
-    r"C:\Users\ri\OneDrive\ai project\data cleaning\healthcare\data\healthcare_cleaned.csv"
+    r"C:\Users\ri\OneDrive\ai project\data cleaning\healthcare\data\healthcare_encoded.csv"
 )
 
 # 2. Quick overview

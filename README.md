@@ -1,7 +1,6 @@
 ## 🧹 Step 1: Data Cleaning and Preprocessing
 <img width="410" height="614" alt="010a4c53-fa2c-4c21-a12c-a47d27cec606 (1)" src="https://github.com/user-attachments/assets/221a9471-abfe-42b8-8442-666555c0dbbb" />
 
-
 ### 🔍 Inspection Summary
 
 ✅ **Shape**: 1000 rows × 10 columns  
@@ -79,13 +78,12 @@ We analyzed each column with missing data and handled them appropriately:
 | **1.2** | Handle missing values                            | ✅ Done  |
 | **1.3** | Fix inconsistencies (formatting, parsing, etc.)  | ✅ Done  |
 
-
 ### ✅ Step 1.4: Save the Cleaned Data — Summary
 
 After completing all data cleaning steps (handling missing values and fixing inconsistencies), we finalized the process by exporting the cleaned dataset to a new CSV file.
 
 **📁 Output Path:**  
-
+`data/healthcare_cleaned.csv`
 
 **📋 Export Includes:**
 - Missing values in `Age`, `Condition`, `Blood Pressure`, and `Cholesterol` were handled
@@ -98,9 +96,9 @@ After completing all data cleaning steps (handling missing values and fixing inc
 - **Step 2: Exploratory Data Analysis (EDA)**
 - or any machine learning, statistical modeling, or visualization steps
 
-
-## 🔎 Step 1.5: Exploratory Data Analysis (EDA)
+## 🔎 Step 1.5: Exploratory Data Analysis (EDA)
 <img width="1903" height="959" alt="image" src="https://github.com/user-attachments/assets/09901f88-f7c7-4c1c-b7f2-c06314d21f30" />
+
 ### Key Distribution Insights
 
 1. **Discrete, cluster‑style distributions**  
@@ -113,7 +111,6 @@ After completing all data cleaning steps (handling missing values and fixing inc
    - **Age** is fairly symmetric between its minimum (25) and maximum (70).  
    - **Cholesterol** shows slight right skew (longer tail toward higher readings).  
    - **Blood pressure** readings appear roughly uniform across their four bins, with no heavy tails.
-
 
 **What we did:**  
 1. **Overview & summaries**  
@@ -135,10 +132,8 @@ After completing all data cleaning steps (handling missing values and fixing inc
 
 ---
 
-## ✅ Step 2: Categorical Encoding
+## ✅ Step 2: Categorical Encoding
 <img width="660" height="440" alt="79dfa770-e1ff-43c9-8ba1-e2f23f8e8157 (1)" src="https://github.com/user-attachments/assets/bc5ce7ab-6cbb-42c4-9990-2aa36dc3b37e" />
-
-
 
 **What we did:**  
 1. **Dropped non‑informative or redundant columns**  
@@ -157,3 +152,39 @@ After completing all data cleaning steps (handling missing values and fixing inc
 - One‑Hot Encoding prevents implying any artificial order among nominal categories.  
 - Dropping identifiers and unused fields avoids privacy leaks and model overfitting.  
 - Using a `ColumnTransformer` with `handle_unknown='ignore'` makes your pipeline robust and reusable.  
+
+---
+
+## ✅ Step 3: Feature Scaling
+<img width="660" height="440" alt="feature_scaling_image" src="https://github.com/user-attachments/assets/placeholder-for-scaling-image" />
+
+**What we did:**  
+1. **Loaded the encoded dataset**  
+   - Read `data/healthcare_encoded.csv`, which contains 76 records with 17 columns (13 one-hot encoded columns for `Gender`, `Condition`, `Medication`, and 4 numeric columns: `Age`, `Cholesterol`, `Systolic`, `Diastolic`).  
+2. **Separated numeric columns**  
+   - Identified `Age`, `Cholesterol`, `Systolic`, and `Diastolic` for scaling, as these have varying ranges (e.g., `Age`: 25–70, `Cholesterol`: 160–220).  
+3. **Applied StandardScaler**  
+   - Standardized the numeric columns to have a mean of 0 and a standard deviation of 1 using `StandardScaler` from scikit-learn.  
+   - One-hot encoded columns (binary 0/1 values) were left unchanged, as scaling is unnecessary for binary features.  
+4. **Combined scaled and non-scaled columns**  
+   - Reconstructed the dataset by combining the scaled numeric columns with the original one-hot encoded columns.  
+5. **Saved the result**  
+   - Exported the scaled dataset to `Feature Scaling/healthcare_scaled.csv`, yielding a fully numeric, scaled dataset ready for machine learning.  
+
+**Why it matters:**  
+- Many machine learning algorithms (e.g., SVM, k-NN, neural networks) are sensitive to feature scales, as differing ranges can skew distance-based calculations or gradient updates.  
+- `StandardScaler` ensures all numeric features contribute equally to the model by standardizing them to a common scale (mean = 0, std = 1).  
+- Preserving one-hot encoded columns without scaling maintains their binary nature, which is appropriate for categorical features.  
+- The scaled dataset is now optimized for a wide range of machine learning tasks, such as classification of medical conditions or regression on blood pressure values.
+
+**📁 Output Path:**  
+`Feature Scaling/healthcare_scaled.csv`
+
+**📋 Output Includes:**  
+- Standardized numeric columns (`Age`, `Cholesterol`, `Systolic`, `Diastolic`) with mean ≈ 0 and std ≈ 1.  
+- Unchanged one-hot encoded columns (e.g., `Gender_female`, `Condition_Diabetes`, etc.).  
+- No missing values, as imputation was handled in prior steps.  
+
+✅ The scaled CSV file is now ready for:  
+- **Machine Learning**: Training models like SVM, k-NN, or neural networks that require scaled features.  
+- **Further Analysis**: Evaluating feature importance or correlations in a machine learning context.
