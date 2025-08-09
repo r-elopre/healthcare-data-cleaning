@@ -1,4 +1,11 @@
 # Healthcare Data Cleaning and Preprocessing
+<p align="center">
+  <a href="https://youtu.be/9nqpTcP0RZ0">
+    <img src="https://img.youtube.com/vi/9nqpTcP0RZ0/maxresdefault.jpg" alt="Healthcare Data Cleaning & Preprocessing Video">
+  </a>
+  <br/>
+  <em>Click the thumbnail to watch on YouTube</em>
+</p>
 
 ## 🧹 Step 1: Data Cleaning and Preprocessing
 
